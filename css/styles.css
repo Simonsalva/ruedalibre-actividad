@@ -8,15 +8,18 @@
   --azul-noche: #14213D;
   --crema: #FAF6EF;
   --gris-asfalto: #5B6470;
-  
+
   /* Tipografías */
   --fuente-titulos: 'Montserrat', sans-serif;
   --fuente-texto: 'Open Sans', sans-serif;
-  
+
   /* Escala de espaciado */
-  --espacio-sm: 0.5rem;   /* 8px aprox */
-  --espacio-md: 1rem;     /* 16px aprox */
-  --espacio-lg: 2rem;     /* 32px aprox */
+  --espacio-sm: 0.5rem;
+  /* 8px aprox */
+  --espacio-md: 1rem;
+  /* 16px aprox */
+  --espacio-lg: 2rem;
+  /* 32px aprox */
 }
 
 /* ESTILOS BASE Y HERENCIA */
@@ -41,7 +44,11 @@ body {
 }
 
 /* Encabezados agrupados */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h4,
+h5,
+h6 {
   font-family: var(--fuente-titulos);
   font-weight: 700;
   color: var(--azul-noche);
@@ -50,9 +57,9 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Contenedor principal centrado (MiniReto 11) */
 main {
-  max-width: 1200px; 
-  width: 90%;   
-  margin: 0 auto; 
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
   padding: var(--espacio-lg) 0;
   flex: 1;
 }
@@ -61,61 +68,55 @@ main {
 header {
   background-color: var(--azul-noche);
   padding: var(--espacio-md) var(--espacio-lg);
-}
-
-.menu-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: var(--espacio-md);
 }
 
+header h3 {
+  font-size: 4.rem;
+  color: #ffffff;
+  margin: 1;
+}
+
+/* Menú horizontal sin viñetas */
 #menu {
+  display: flex;
+  gap: var(--espacio-md);
   list-style: none;
-  padding: 0;
   margin: 0;
-  display: flex; 
-  gap: var(--espacio-lg);
+  padding: 0;
 }
-
-#menu a,
-nav a {
-  color: var(--crema);
-  text-decoration: none;
-  font-weight: 600;
-  padding: var(--espacio-sm) var(--espacio-md);
-  border-radius: 4px;
-  transition: background-color 0.2s ease, color 0.2s ease;
+.mi-texto {
+  font-size: 18px;
+  text-align: left;
 }
-
 /* Enlace activo de la página actual */
 .menu-btn {
-    padding: 10px 20px;
-    text-decoration: none;
-    color: #333;
-    display: inline-block;
-    transition: all 0.3s;
-  }
-  .menu-btn.activo {
-    color: #ff4d00;
-    font-weight: bold;
-    border-bottom: 2px solid #007bff; /* Una línea bonita abajo */
-  }
-
-/* Estados */
-#menu a:hover,
-nav a:hover {
-  color: var(--naranja-pedal);
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #FAF6EF;
+  display: inline-block;
+  transition: all 0.35s;
+  flex-wrap: wrap;
+  flex-direction: right;
 }
 
-#menu a:focus,
-nav a:focus,
-button:focus,
-input:focus,
-select:focus,
-textarea:focus {
-  outline: 3px solid var(--naranja-pedal);
-  outline-offset: 2px;
+.menu-btn.activo {
+  color: #F39A2B;
+  font-weight: bold;
+  border-bottom: 2px solid #007bff;
+  /* Una línea bonita abajo */
 }
+
+.mi-imagen {
+  width: 100px;
+  height: auto;
+  display: block; margin: 1 auto;
+}
+
 
 /* COMPONENTES: TARJETAS Y SECCIONES */
 .tarjeta-servicio {
@@ -124,7 +125,7 @@ textarea:focus {
   border-radius: 8px;
   padding: var(--espacio-md);
   margin-bottom: var(--espacio-md);
-  position: relative; 
+  position: relative;
 }
 
 .tarjeta-servicio img {
@@ -168,7 +169,8 @@ caption {
   font-size: 1.2rem;
 }
 
-th, td {
+th,
+td {
   padding: var(--espacio-md);
   border-bottom: 1px solid rgba(91, 100, 112, 0.15);
   text-align: left;
@@ -181,7 +183,7 @@ th {
 }
 
 /* FORMULARIO DE RESERVAS */
-fform {
+form {
   background-color: #ffffff;
   padding: var(--espacio-lg);
   border-radius: 8px;
@@ -198,7 +200,7 @@ form p:has(input[type="radio"]),
 form p:has(input[type="checkbox"]) {
   flex-direction: row;
   align-items: center;
-  gap: 0.5rem; 
+  gap: 0.5rem;
 }
 
 form input[type="radio"],
@@ -214,8 +216,8 @@ label {
   margin-bottom: var(--espacio-sm);
 }
 
-form input[type="radio"] + label,
-form input[type="checkbox"] + label {
+form input[type="radio"]+label,
+form input[type="checkbox"]+label {
   margin-bottom: 0;
   font-weight: normal;
   cursor: pointer;
@@ -277,7 +279,8 @@ button[type="submit"],
 
 button[type="submit"]:hover,
 .btn-cta:hover {
-  background-color: #155c3c; /* Tono verde ligeramente más oscuro */
+  background-color: #155c3c;
+  /* Tono verde ligeramente más oscuro */
 }
 
 /* Whatssapsito*/
@@ -285,7 +288,8 @@ button[type="submit"]:hover,
   position: fixed;
   bottom: var(--espacio-lg);
   right: var(--espacio-lg);
-  background-color: #25D366; /* Color oficial de WhatsApp */
+  background-color: #25D366;
+  /* Color oficial de WhatsApp */
   color: #ffffff;
   padding: var(--espacio-sm) var(--espacio-md);
   border-radius: 50px;

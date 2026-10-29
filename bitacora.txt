@@ -45,4 +45,13 @@ Dia 3.
 
     Caja, posición y a correr: Metí el box-sizing: border-box para que no se me desconfigurara nada, organicé las tarjetas de servicios, puse la etiqueta flotante de "Nuevo" con position: absolute, y el botón de WhatsApp abajo con position: fixed para que lo acompañe a uno en todo el scroll.
 
-    Cierre: Al final limpié un poco el CSS por secciones, comprobé con Tab que el teclado se moviera bien por los campos (accesibilidad al 100%), hice commit, push, y... ¡V1.0 publicada! 🚲💨
+    Cierre: Al final limpié un poco el CSS por secciones, comprobé con Tab que el teclado se moviera bien por los campos (accesibilidad al 100%), hice commit, push, y... ¡V1.0 publicada! 
+    
+    
+    
+    28 octubre 2026
+    Intenté el dia 1 semana 2, donde estuve mirando como arreglar el menú, ya lo hice varias veces, quise cambiar la orientación del menú porque estaba vertical, lo quería horizontal y a la derecha, y quise tener el nombre de Rueda Libre a la izquierda solito, pero por más que busqué códigos que pudierna arreglarlo, solo añadía y notaba que generaba conflictos, terminé en CSS con más de 6 secciones que se llamaban Menú, intentando arreglarlo, tuve que recurrir a Claude para que me dijera que fue lo que rompí  y por que no avanzaba con el promt: Estudiando HTML y CSS, no he llegado a bootstrap aún, y creo que cree varios conflictos en el código, guiame para entender que fue lo que dañé, pero no me lo des, solo dime paso a paso cual fue el error que cometí y ayudame a poder arreglarlo por mismo.
+    
+    Con este promt me guió a borrar todas las secciones de Menu en CSS, tenía dos secciones como "menú.activo", para señalar cual página era en la que estaba, y terminé dejando solo uno. 
+    
+    Luego arreglé la orientacion con el código text-align: left;

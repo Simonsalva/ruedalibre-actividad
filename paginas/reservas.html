@@ -10,15 +10,40 @@
   <link rel="stylesheet" href="../css/styles.css">
   <title>Reservas</title>
 </head>
+<!-- Menu -->
 <header>
+  <div style="text-align: left;">
+    <a href="../index.html">
+      <img src="../img/logo2.png" alt="loguito" width="150px">
+    </a>
+  </div>
   <nav class="menu-container">
     <ul id="menu">
-      <li><a href="../index.html">Inicio</a></li>
-      <li><a href="tarifas.html">Tarifas y rutas</a></li>
-      <li><a href="reservas.html" class="activo">Reservas</a></li>
+      <li><a href="../index.html" class="menu-btn">Inicio</a></li>
+      <li><a href="tarifas.html" class="menu-btn">Tarifas y rutas</a></li>
+      <li><a href="reservas.html" class="menu-btn">Reservas</a></li>
     </ul>
   </nav>
 </header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    let pathActual = window.location.pathname;
+
+    if (pathActual.endsWith('/') || pathActual === '') {
+      pathActual = 'index.html';
+    }
+
+    const enlaces = document.querySelectorAll("#menu .menu-btn");
+
+    enlaces.forEach(enlace => {
+      const hrefEnlace = enlace.getAttribute("href");
+      if (pathActual.endsWith(hrefEnlace)) {
+        enlace.classList.add("activo");
+      }
+    });
+  });
+</script>
 
 <body>
 
