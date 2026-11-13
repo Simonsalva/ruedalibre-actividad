@@ -55,3 +55,95 @@ Dia 3.
     Con este promt me guió a borrar todas las secciones de Menu en CSS, tenía dos secciones como "menú.activo", para señalar cual página era en la que estaba, y terminé dejando solo uno. 
     
     Luego arreglé la orientacion con el código text-align: left;
+
+
+13 de noviembre · Revisión final de la semana 1
+Revisé la v1.0 contra los criterios de los 12 MiniRetos y me apoyé en Claude para ajustar lo que faltaba. Abajo dejo lo que quedó en cada parte.
+
+Corrección de la petición al servidor
+    URL: http://127.0.0.1:5500/index.html
+    Protocolo: http | Host: 127.0.0.1 | Puerto: 5500 | Ruta: /index.html
+    Método: GET | Código: 200 OK la primera vez. El 304 que había anotado sale cuando el navegador ya tiene la página en caché; con Ctrl + Shift + R vuelve a dar 200. (comprobar en Network)
+    /promociones.html responde 404 Not Found porque ese archivo no existe en el servidor.
+
+    JavaScript: es el comportamiento. Ejemplo en Rueda Libre: mostrar un mensaje cuando la reserva se envía o abrir y cerrar el menú en el celular.
+
+Tabla de rutas (origen → destino → ruta)
+    index.html → tarifas.html → paginas/tarifas.html
+    index.html → reservas.html → paginas/reservas.html
+    index.html → recorridos → paginas/tarifas.html#recorridos
+    tarifas.html → index.html → ../index.html
+    tarifas.html → reservas.html → reservas.html
+    reservas.html → index.html → ../index.html
+    reservas.html → tarifas.html → tarifas.html
+    cualquier página → logo → img/logo2.png (desde paginas/: ../img/logo2.png)
+    cualquier página → estilos → css/styles.css (desde paginas/: ../css/styles.css)
+
+Esquema de regiones
+    Inicio: header (logo + nav) / main (portada, quiénes somos, servicios con 3 article, cómo alquilar, encuéntranos) / footer
+    Tarifas: header (logo + nav) / main (section tarifas, section recorridos, aside qué llevar) / footer
+    Reservas: header (logo + nav) / main (section formulario, aside horario) / footer
+    No quedó ningún div ni span.
+
+Controles del formulario
+    Tipo de bicicleta con radio: son solo 3 opciones y se elige una, se ven todas sin abrir nada.
+    Plan con select: es una sola elección y ocupa menos espacio.
+    Cantidad con number: solo deja números y con min y max limita de 1 a 6.
+
+Pruebas de validación (campo · dato · esperado · obtenido)
+    Celular · 3001234567 · válido · válido
+    Celular · 1234567890 · rechazado · rechazado
+    Celular · 300123 · rechazado · rechazado
+    Documento · 12ab56 · rechazado · rechazado
+    Documento · 12345 · rechazado · rechazado
+    Nombre · Al · rechazado · rechazado
+    Correo · juan.correo · rechazado · rechazado
+    Fecha · 2026-10-15 · rechazado · rechazado
+    Fecha · 2026-11-20 · válido · válido
+    Cantidad · 7 · rechazado · rechazado
+    Comentarios · 310 caracteres · solo deja 300 · solo deja 300
+    Formulario vacío · enviar · no se envía · no se envía
+    (recorrer el formulario solo con Tab, Shift + Tab, flechas, espacio y Enter)
+
+Auditoría de accesibilidad (hallazgo → corrección)
+    1. Inicio tenía tres h1 → quedó uno solo y las secciones en h2.
+    2. El logo tenía alt="loguito" → ahora dice "Rueda Libre, ir al inicio" porque es un enlace.
+    3. En reservas el menú estaba por fuera del body → se movió adentro.
+    4. El horario usaba solo dt → ahora cada día (dt) tiene su horario (dd).
+    5. Los caption de las tablas no se cerraban y varios th tenían scope="co" → se cerraron y quedó scope="col".
+    6. Tarifas y reservas tenían dos title → cada página tiene un solo title distinto.
+    7. El enlace del mapa no avisaba que abre otra pestaña → ahora lo dice en el texto.
+
+Contraste (texto sobre fondo · relación · uso)
+    Blanco sobre Verde Ruta · 5.31:1 · apto texto normal
+    Blanco sobre Naranja Pedal · 2.22:1 · no apto
+    Azul Noche sobre Naranja Pedal · 7.2:1 · apto texto normal
+    Azul Noche sobre Crema · 14.83:1 · apto texto normal
+    Gris Asfalto sobre Crema · 5.57:1 · apto texto normal
+    Verde Ruta sobre Crema · 4.93:1 · apto texto normal
+    Naranja Pedal sobre Crema · 2.06:1 · no apto
+    Blanco sobre Azul Noche · 15.97:1 · apto texto normal
+    (confirmar con WebAIM Contrast Checker)
+
+Mapa de uso de color
+    Texto: Azul Noche sobre Crema.
+    Fondos: Crema general, Azul Noche en encabezado y pie, blanco en tarjetas, tablas y formulario.
+    Botones: Verde Ruta con texto blanco.
+    Enlaces: Verde Ruta sobre Crema.
+    Naranja Pedal solo como detalle (enlace activo sobre Azul Noche, foco y etiqueta "Nuevo" con texto Azul Noche), nunca como color de texto sobre Crema.
+
+Herencia
+    Se hereda: font-family y color. El párrafo los toma del body (se ve en Computed).
+    No se hereda: padding y border. El párrafo no recibe el relleno ni el borde del contenedor.
+
+Especificidad del menú
+    #menu a = (1,0,1): un id y un elemento.
+    .activo = (0,1,0): una clase.
+    El id gana, por eso la clase activo no cambiaba el color. Se resolvió con #menu a.activo = (1,1,1), sin !important.
+
+Box model
+    Ancho de una tarjeta con border-box: 928 px. Con content-box: 962 px (se suman 32 px de relleno y 2 px de borde y se sale del contenedor).
+
+Publicación
+    GitHub Pages: (pegar aquí el enlace)
+

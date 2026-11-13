@@ -1,29 +1,21 @@
-/* =================================================_
-   1. VARIABLES GLOBALES Y CONFIGURACIÓN DE MARCA
-================================================= */
+/* ===== Variables de marca ===== */
 :root {
-  /* Colores de marca */
   --verde-ruta: #1E7A4F;
   --naranja-pedal: #F39A2B;
   --azul-noche: #14213D;
   --crema: #FAF6EF;
   --gris-asfalto: #5B6470;
+  --blanco: #FFFFFF;
 
-  /* Tipografías */
-  --fuente-titulos: 'Montserrat', sans-serif;
-  --fuente-texto: 'Open Sans', sans-serif;
+  --fuente-titulos: 'Montserrat', Arial, sans-serif;
+  --fuente-texto: 'Open Sans', Arial, sans-serif;
 
-  /* Escala de espaciado */
   --espacio-sm: 0.5rem;
-  /* 8px aprox */
   --espacio-md: 1rem;
-  /* 16px aprox */
   --espacio-lg: 2rem;
-  /* 32px aprox */
 }
 
-/* ESTILOS BASE Y HERENCIA */
-/* Control del modelo de caja (MiniReto 11) */
+/* ===== Base ===== */
 *,
 *::before,
 *::after {
@@ -31,202 +23,205 @@
 }
 
 body {
+  margin: 0;
   font-family: var(--fuente-texto);
   font-size: 1rem;
-  font-weight: 400;
-  color: var(--gris-asfalto);
+  line-height: 1.6;
+  color: var(--azul-noche);
   background-color: var(--crema);
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
-/* Encabezados agrupados */
 h1,
 h2,
-h4,
-h5,
-h6 {
+h3 {
   font-family: var(--fuente-titulos);
   font-weight: 700;
   color: var(--azul-noche);
-  margin-top: 0;
 }
 
-/* Contenedor principal centrado (MiniReto 11) */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--verde-ruta);
+}
+
+a:hover {
+  color: var(--azul-noche);
+}
+
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid var(--naranja-pedal);
+  outline-offset: 2px;
+}
+
 main {
-  max-width: 1200px;
-  width: 90%;
+  max-width: 60rem;
   margin: 0 auto;
-  padding: var(--espacio-lg) 0;
-  flex: 1;
+  padding: var(--espacio-lg) var(--espacio-md);
 }
 
-/* NAVEGACIÓN Y ESTADOS */
+/* ===== Encabezado y menú ===== */
 header {
   background-color: var(--azul-noche);
   padding: var(--espacio-md) var(--espacio-lg);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: var(--espacio-md);
 }
 
-header h3 {
-  font-size: 4.rem;
-  color: #ffffff;
-  margin: 1;
-}
-
-/* Menú horizontal sin viñetas */
 #menu {
-  display: flex;
-  gap: var(--espacio-md);
   list-style: none;
-  margin: 0;
+  margin: var(--espacio-sm) 0 0;
   padding: 0;
 }
-.mi-texto {
-  font-size: 18px;
-  text-align: left;
-}
-/* Enlace activo de la página actual */
-.menu-btn {
-  padding: 10px 20px;
-  text-decoration: none;
-  color: #FAF6EF;
+
+#menu li {
   display: inline-block;
-  transition: all 0.35s;
-  flex-wrap: wrap;
-  flex-direction: right;
+  margin-right: var(--espacio-sm);
 }
 
-.menu-btn.activo {
-  color: #F39A2B;
-  font-weight: bold;
-  border-bottom: 2px solid #007bff;
-  /* Una línea bonita abajo */
+/* regla del compañero */
+#menu a {
+  display: inline-block;
+  padding: var(--espacio-sm) var(--espacio-md);
+  color: var(--crema);
+  font-weight: 600;
+  text-decoration: none;
 }
 
-.mi-imagen {
-  width: 100px;
-  height: auto;
-  display: block; margin: 1 auto;
+/* sola no gana: .activo (0,1,0) pierde contra #menu a (1,0,1) */
+.activo {
+  color: var(--verde-ruta);
+  font-weight: 600;
 }
 
-
-/* COMPONENTES: TARJETAS Y SECCIONES */
-.tarjeta-servicio {
-  background-color: var(--crema);
-  border: 1px solid rgba(91, 100, 112, 0.2);
-  border-radius: 8px;
-  padding: var(--espacio-md);
-  margin-bottom: var(--espacio-md);
-  position: relative;
+#menu a.activo {
+  color: var(--naranja-pedal);
+  border-bottom: 3px solid var(--naranja-pedal);
 }
 
-.tarjeta-servicio img {
-  width: 100%;
-  height: auto;
+#menu a:hover,
+#menu a:focus {
+  color: var(--naranja-pedal);
+  text-decoration: underline;
+}
+
+/* ===== Portada ===== */
+.portada {
+  min-height: 60vh;
+}
+
+/* ===== Botón de llamada a la acción ===== */
+.btn-cta {
+  display: inline-block;
+  padding: var(--espacio-md) var(--espacio-lg);
+  background-color: var(--verde-ruta);
+  color: var(--blanco);
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  text-decoration: none;
   border-radius: 4px;
 }
 
-/* Etiqueta "Nuevo" */
+.btn-cta:hover,
+.btn-cta:focus {
+  background-color: var(--azul-noche);
+  color: var(--blanco);
+}
+
+/* ===== Tarjetas de servicios ===== */
+.tarjeta {
+  width: 100%;
+  position: relative;
+  background-color: var(--blanco);
+  border: 1px solid var(--gris-asfalto);
+  border-radius: 8px;
+  padding: var(--espacio-md);
+  margin-bottom: var(--espacio-lg);
+}
+
+.tarjeta img {
+  width: 100%;
+  border-radius: 4px;
+}
+
 .etiqueta-nuevo {
   position: absolute;
-  top: var(--espacio-md);
-  right: var(--espacio-md);
+  top: var(--espacio-sm);
+  right: var(--espacio-sm);
+  margin: 0;
+  padding: 0.25rem var(--espacio-sm);
   background-color: var(--naranja-pedal);
-  color: #ffffff;
+  color: var(--azul-noche);
   font-family: var(--fuente-titulos);
   font-size: 0.85rem;
   font-weight: 700;
-  padding: 0.25rem var(--espacio-sm);
   border-radius: 4px;
-  text-transform: uppercase;
 }
 
-/* TABLAS DE TARIFAS */
+/* ===== Tablas ===== */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: var(--espacio-lg);
-  background-color: #ffffff;
-  text-align: center;
-  border-radius: 10px;
-  overflow: hidden;
+  background-color: var(--blanco);
+  margin-bottom: var(--espacio-md);
 }
 
 caption {
   font-family: var(--fuente-titulos);
   font-weight: 700;
-  color: var(--azul-noche);
-  margin-bottom: var(--espacio-sm);
   text-align: left;
-  font-size: 1.2rem;
+  padding-bottom: var(--espacio-sm);
 }
 
 th,
 td {
-  padding: var(--espacio-md);
-  border-bottom: 1px solid rgba(91, 100, 112, 0.15);
+  padding: var(--espacio-sm) var(--espacio-md);
+  border: 1px solid var(--gris-asfalto);
   text-align: left;
 }
 
-th {
+thead th {
   background-color: var(--azul-noche);
   color: var(--crema);
-  font-family: var(--fuente-titulos);
 }
 
-/* FORMULARIO DE RESERVAS */
+/* ===== Formulario ===== */
 form {
-  background-color: #ffffff;
-  padding: var(--espacio-lg);
+  background-color: var(--blanco);
+  border: 1px solid var(--gris-asfalto);
   border-radius: 8px;
-  border: 1px solid rgba(91, 100, 112, 0.2);
+  padding: var(--espacio-lg);
 }
 
-form p {
-  margin-bottom: var(--espacio-sm);
-  display: flex;
-  flex-direction: column;
+fieldset {
+  border: 1px solid var(--gris-asfalto);
+  border-radius: 6px;
+  padding: var(--espacio-md);
+  margin-bottom: var(--espacio-lg);
 }
 
-form p:has(input[type="radio"]),
-form p:has(input[type="checkbox"]) {
-  flex-direction: row;
-  align-items: center;
-  gap: 0.5rem;
+legend {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  padding: 0 var(--espacio-sm);
 }
 
-form input[type="radio"],
-form input[type="checkbox"] {
-  width: auto;
-  margin: 0;
-  cursor: pointer;
-}
-
-label {
+label,
+.opciones {
+  display: block;
   font-weight: 600;
-  color: var(--azul-noche);
   margin-bottom: var(--espacio-sm);
 }
 
-form input[type="radio"]+label,
-form input[type="checkbox"]+label {
-  margin-bottom: 0;
-  font-weight: normal;
-  cursor: pointer;
-}
-
-label {
-  font-weight: 600;
-  color: var(--azul-noche);
-  margin-bottom: var(--espacio-sm);
+.opcion label {
+  display: inline-block;
+  font-weight: 400;
+  margin: 0 0 0 var(--espacio-sm);
 }
 
 input[type="text"],
@@ -236,90 +231,64 @@ input[type="date"],
 input[type="number"],
 select,
 textarea {
+  display: block;
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid var(--gris-asfalto);
-  border-radius: 4px;
   font-family: var(--fuente-texto);
   font-size: 1rem;
-  color: var(--gris-asfalto);
-  background-color: var(--crema);
-}
-
-fieldset {
-  border: 1px solid var(--gris-asfalto);
-  border-radius: 6px;
-  padding: var(--espacio-md);
-  margin-bottom: var(--espacio-md);
-}
-
-legend {
-  font-family: var(--fuente-titulos);
-  font-weight: 700;
   color: var(--azul-noche);
-  padding: 0 var(--espacio-sm);
+  background-color: var(--crema);
+  border: 1px solid var(--gris-asfalto);
+  border-radius: 4px;
 }
 
-/* Botones de acción y llamada a la acción (CTA) */
-button[type="submit"],
-.btn-cta {
-  background-color: var(--verde-ruta);
-  color: #ffffff;
-  font-family: var(--fuente-titulos);
-  font-weight: 700;
+button[type="submit"] {
   padding: var(--espacio-md) var(--espacio-lg);
+  background-color: var(--verde-ruta);
+  color: var(--blanco);
+  font-family: var(--fuente-titulos);
+  font-size: 1rem;
+  font-weight: 700;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
-  display: inline-block;
-  text-align: center;
-  text-decoration: none;
 }
 
-button[type="submit"]:hover,
-.btn-cta:hover {
-  background-color: #155c3c;
-  /* Tono verde ligeramente más oscuro */
+button[type="submit"]:hover {
+  background-color: var(--azul-noche);
 }
 
-/* Whatssapsito*/
-.whatsapp-flotante {
+/* ===== WhatsApp fijo ===== */
+.whatsapp {
   position: fixed;
-  bottom: var(--espacio-lg);
-  right: var(--espacio-lg);
-  background-color: #25D366;
-  /* Color oficial de WhatsApp */
-  color: #ffffff;
+  right: var(--espacio-md);
+  bottom: var(--espacio-md);
   padding: var(--espacio-sm) var(--espacio-md);
-  border-radius: 50px;
-  font-family: var(--fuente-titulos);
-  font-weight: 700;
+  background-color: var(--azul-noche);
+  color: var(--blanco);
+  font-weight: 600;
   text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  transition: transform 0.2s ease;
+  border-radius: 50px;
 }
 
-.whatsapp-flotante:hover {
-  transform: scale(1.05);
-  color: #ffffff;
+.whatsapp:hover,
+.whatsapp:focus {
+  color: var(--naranja-pedal);
 }
 
-/* PIE DE PÁGINA*/
+/* ===== Pie ===== */
 footer {
   background-color: var(--azul-noche);
   color: var(--crema);
   text-align: center;
-  padding: var(--espacio-lg);
-  margin-top: auto;
+  padding: var(--espacio-lg) var(--espacio-md);
 }
 
 footer a {
-  color: var(--naranja-pedal);
-  text-decoration: none;
+  color: var(--crema);
 }
 
-footer a:hover {
-  text-decoration: underline;
+footer a:hover,
+footer a:focus {
+  color: var(--naranja-pedal);
 }
